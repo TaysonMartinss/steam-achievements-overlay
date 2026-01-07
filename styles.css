@@ -392,6 +392,48 @@ h3 i {
     color: var(--text-tertiary);
 }
 
+/* Input with Icon (Password Toggle) - Apple Style */
+.input-with-icon {
+    position: relative;
+    width: 100%;
+}
+
+.input-with-icon .input-field {
+    width: 100%;
+}
+
+.toggle-password-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--text-tertiary);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.toggle-password-btn:hover {
+    color: var(--primary);
+    background: rgba(0, 122, 255, 0.08);
+}
+
+.toggle-password-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.toggle-password-btn i {
+    pointer-events: none;
+}
+
 /* Buttons - Apple Style */
 .btn {
     padding: 11px 20px;

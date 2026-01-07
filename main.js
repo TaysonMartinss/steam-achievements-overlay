@@ -77,7 +77,8 @@ function createOverlayWindow() {
         }
     });
 
-    overlayWindow.loadFile('overlay.html');
+    // Carregar do servidor HTTP para garantir funcionamento
+    overlayWindow.loadURL('http://localhost:3000/overlay.html');
 
     overlayWindow.on('closed', () => {
         overlayWindow = null;

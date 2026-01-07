@@ -51,9 +51,14 @@
 
             <div style="margin-top: 32px;">
                 <h3>Cole sua API Key aqui:</h3>
-                <input type="text" id="apiKey" placeholder="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" class="input-field"
-                    maxlength="32"
-                    style="font-family: 'Consolas', 'Monaco', monospace; letter-spacing: 2px; text-transform: uppercase;">
+                <div class="input-with-icon">
+                    <input type="password" id="apiKey" placeholder="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+                        class="input-field" maxlength="32"
+                        style="font-family: 'Consolas', 'Monaco', monospace; letter-spacing: 2px; text-transform: uppercase; padding-right: 50px;">
+                    <button type="button" onclick="toggleApiKeyVisibility()" class="toggle-password-btn" id="toggleBtn">
+                        <i class="fas fa-eye" id="toggleIcon"></i>
+                    </button>
+                </div>
 
                 <div id="apiKeyStatus" class="status-message"></div>
             </div>

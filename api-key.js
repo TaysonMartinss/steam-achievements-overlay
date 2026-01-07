@@ -9,6 +9,22 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Função para mostrar/ocultar API Key
+function toggleApiKeyVisibility() {
+    const apiKeyInput = document.getElementById('apiKey');
+    const toggleIcon = document.getElementById('toggleIcon');
+
+    if (apiKeyInput.type === 'password') {
+        apiKeyInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    } else {
+        apiKeyInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    }
+}
+
 // Função para validar o formato da API Key
 function validateApiKey(apiKey) {
     // API Key da Steam tem 32 caracteres hexadecimais

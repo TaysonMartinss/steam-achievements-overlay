@@ -206,7 +206,8 @@ async function selectGame(appId, gameName, steamId) {
 
     // Criar URL com parâmetros para funcionar no OBS
     const apiKey = localStorage.getItem('steamApiKey');
-    const baseUrl = `${window.location.origin}${window.location.pathname.replace('config.html', 'overlay.html')}`;
+    // SEMPRE usar localhost:3000 para garantir que funciona no OBS/Streamlabs
+    const baseUrl = 'http://localhost:3000/overlay.html';
     const overlayUrl = `${baseUrl}?steamId=${steamId}&appId=${appId}&apiKey=${apiKey}&gameName=${encodeURIComponent(gameName)}`;
     document.getElementById('overlayUrl').textContent = overlayUrl;
 

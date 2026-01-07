@@ -38,13 +38,37 @@ function ensureApiKey() {
     return STEAM_API_KEY;
 }
 
-// Função helper para fazer fetch com proxy local
+// Função helper para fazer fetch com proxy local ou direto
 async function fetchWithProxy(url) {
     try {
-        const proxyUrl = `${PROXY_URL}?url=${encodeURIComponent(url)}`;
-        console.log('Fazendo requisição via proxy:', url);
+        // Tentar usar o proxy primeiro
+        try {
+            const proxyUrl = `${PROXY_URL}?url=${encodeURIComponent(url)}`;
+            console.log('Tentando requisição via proxy:', url);
 
-        const response = await fetch(proxyUrl);
+            const response = await fetch(proxyUrl, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                timeout: 5000
+            });
+
+            if (response.ok) {
+                return await response.json();
+            }
+        } catch (proxyError) {
+            console.warn('Proxy não disponível, tentando acesso direto:', proxyError.message);
+        }
+
+        // Fallback: tentar acesso direto (funciona em alguns casos)
+        console.log('Tentando requisição direta:', url);
+        const response = await fetch(url, {
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -53,7 +77,7 @@ async function fetchWithProxy(url) {
         return await response.json();
     } catch (error) {
         console.error('Erro ao fazer requisição:', error);
-        throw new Error(`Erro ao buscar dados: ${error.message}. Certifique-se de que o servidor proxy está rodando.`);
+        throw new Error(`Erro ao buscar dados: ${error.message}`);
     }
 }
 
