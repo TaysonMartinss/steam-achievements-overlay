@@ -1,0 +1,62 @@
+{
+    "name": "steam-overlay-app",
+    "version": "1.0.0",
+    "description": "Aplicativo desktop para overlay de conquistas Steam",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "dev": "electron . --enable-logging",
+        "build": "electron-builder",
+        "build:win": "electron-builder --win",
+        "build:mac": "electron-builder --mac",
+        "build:linux": "electron-builder --linux"
+    },
+    "build": {
+        "appId": "com.steamoverlay.app",
+        "productName": "Steam Overlay",
+        "directories": {
+            "output": "dist"
+        },
+        "files": [
+            "**/*"
+        ],
+        "win": {
+            "target": [
+                {
+                    "target": "portable",
+                    "arch": [
+                        "x64"
+                    ]
+                }
+            ],
+            "icon": "icon.ico"
+        },
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true,
+            "createDesktopShortcut": true,
+            "createStartMenuShortcut": true
+        },
+        "mac": {
+            "target": "dmg",
+            "icon": "icon.icns"
+        },
+        "linux": {
+            "target": [
+                "AppImage",
+                "deb"
+            ],
+            "icon": "icon.png",
+            "category": "Utility"
+        }
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "node-fetch": "^2.6.7"
+    },
+    "devDependencies": {
+        "electron": "^39.2.7",
+        "electron-builder": "^26.4.0"
+    }
+}

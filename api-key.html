@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuração - API Key Steam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="config-page">
+    <div class="container">
+        <!-- Stepper -->
+        <div class="stepper">
+            <div class="step active">
+                <div class="step-number">1</div>
+                <div class="step-label">API Key</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-label">Perfil Steam</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-label">Selecionar Jogo</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-label">Concluído</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <p class="help-text">Para começar, você precisa configurar sua chave da API Steam. É rápido e gratuito!</p>
+
+            <div class="info-box dark">
+                <p class="help-text"><strong><i class="fas fa-clipboard-list"></i> Como obter sua API Key:</strong></p>
+                <ol>
+                    <li>Acesse: <a href="https://steamcommunity.com/dev/apikey"
+                            target="_blank">https://steamcommunity.com/dev/apikey</a></li>
+                    <li>Faça login na sua conta Steam</li>
+                    <li>No campo "Domain Name", digite: <code>localhost</code></li>
+                    <li>Aceite os termos e clique em <strong>"Register"</strong></li>
+                    <li>Copie a chave gerada (sequência de 32 caracteres)</li>
+                </ol>
+            </div>
+
+            <div style="margin-top: 32px;">
+                <h3>Cole sua API Key aqui:</h3>
+                <input type="text" id="apiKey" placeholder="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" class="input-field"
+                    maxlength="32"
+                    style="font-family: 'Consolas', 'Monaco', monospace; letter-spacing: 2px; text-transform: uppercase;">
+
+                <div id="apiKeyStatus" class="status-message"></div>
+            </div>
+
+            <div class="info-box security">
+                <p>
+                    <strong><i class="fas fa-lock"></i> Sua privacidade está protegida:</strong> A API Key é
+                    armazenada apenas localmente no seu computador e é utilizada exclusivamente para buscar suas
+                    informações públicas da Steam.
+                </p>
+            </div>
+
+            <div class="panel-actions">
+                <button onclick="saveApiKey()" class="btn btn-primary" style="flex: 1;">
+                    <i class="fas fa-check"></i> Salvar e Continuar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="api-key.js"></script>
+</body>
+
+</html>

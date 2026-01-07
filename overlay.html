@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overlay - Conquistas</title>
+    <link rel="stylesheet" href="overlay-styles.css">
+</head>
+
+<body class="overlay">
+    <div id="achievementDisplay" class="achievement-container">
+        <div class="achievement-content">
+            <div class="achievement-icon">
+                <img id="achIcon" src="" alt="Achievement Icon">
+            </div>
+            <div class="achievement-info">
+                <div class="achievement-name" id="achName">Carregando...</div>
+                <div class="achievement-description" id="achDesc"></div>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">0%</div>
+                </div>
+                <div class="achievement-stats">
+                    <span id="unlockedCount">0</span>/<span id="totalCount">0</span> conquistas
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="overlay.js"></script>
+</body>
+
+</html>

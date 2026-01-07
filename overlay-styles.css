@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.overlay {
+    background: transparent;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.achievement-container {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: none;
+    backdrop-filter: none;
+    border: none;
+    animation: slideInFromLeft 0.5s ease-out;
+    max-width: 500px;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.achievement-container.unlocked {
+    border: none;
+    box-shadow: none;
+}
+
+.achievement-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+}
+
+.achievement-icon {
+    flex-shrink: 0;
+}
+
+.achievement-icon img {
+    width: 64px;
+    height: 64px;
+    border-radius: 10px;
+    border: none;
+    display: block;
+}
+
+.achievement-container.unlocked .achievement-icon img {
+    border: none;
+    box-shadow: none;
+}
+
+.achievement-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.achievement-name {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.achievement-container.unlocked .achievement-name {
+    color: #ffd700;
+}
+
+.achievement-description {
+    color: #ddd;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.achievement-container.unlocked .achievement-description {
+    color: #fff;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    transition: width 0.8s ease;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.achievement-container.unlocked .progress-fill {
+    background: linear-gradient(90deg, #ffd700 0%, #ffed4e 100%);
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+.progress-text {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 900;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    min-width: 50px;
+    text-align: right;
+}
+
+.achievement-stats {
+    color: #ccc;
+    font-size: 14px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.achievement-stats span {
+    color: #fff;
+}
+
+.error-message {
+    padding: 15px;
+    background: rgba(211, 47, 47, 0.9);
+    border-radius: 8px;
+    color: white;
+}
+
+/* Animação de atualização */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.achievement-container.updating {
+    animation: pulse 1s ease-in-out;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 450px) {
+    .achievement-container {
+        padding: 12px;
+    }
+
+    .achievement-icon img {
+        width: 48px;
+        height: 48px;
+    }
+
+    .achievement-name {
+        font-size: 16px;
+    }
+
+    .achievement-description {
+        font-size: 11px;
+    }
+
+    .progress-bar {
+        height: 16px;
+    }
+
+    .progress-text {
+        font-size: 12px;
+    }
+}
